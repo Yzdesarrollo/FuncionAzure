@@ -2,7 +2,7 @@
 
 namespace Beacons.Function
 {
-    public class Beacon
+    public class Beacons
     {
         [JsonProperty(PropertyName = "id")]
         public string address { get; set; }
