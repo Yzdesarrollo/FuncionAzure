@@ -51,6 +51,12 @@ namespace Beacons.Function
             // POST
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
+            /*
+            mac = mac ?? data?.name;
+             
+            return mac != null
+                ? (ActionResult)new OkObjectResult($"Hello, {mac}")
+                : new BadRequestObjectResult("Please pass a mac on the query string or in the request body"); */
 
             cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOptions() { ApplicationName = "BeaconsACN" });
 
