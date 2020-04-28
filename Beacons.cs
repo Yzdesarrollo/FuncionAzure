@@ -9,10 +9,12 @@ namespace Beacons.Function
         public int klass { get; set; }
         public string mac { get; set; }
         public string name { get; set; }
+        public string mensaje { get; set; } 
         
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
         }
     }
+
 }
