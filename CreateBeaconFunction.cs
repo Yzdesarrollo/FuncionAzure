@@ -24,7 +24,9 @@ namespace Beacons.Function
         private static string databaseId = "BeaconsDatabase";
         private static string containerId = "BeaconsContainer";
         private static String endpointUri = "https://azcosmosdbbeacon.documents.azure.com:443";
+        //private static String endpointUri = "https://localhost:8081";
         private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
+        //private static String primaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
 
         [FunctionName("CreateBeaconFunction")]
         public static async Task<IActionResult> Run(
@@ -48,10 +50,11 @@ namespace Beacons.Function
 
             Beacons CreateItemBeacons = new Beacons
             {
-                address = data?.address,
-                klass = data?.klass,
-                mac = data?.mac,
-                name = data?.name
+                uuid = data?.uuid ?? null,
+                mac = data?.mac ?? null,
+                major = data?.major ?? null,
+                minor = data?.minor ?? null,
+                message = data?.message ?? null
             };
               
             try
@@ -71,7 +74,7 @@ namespace Beacons.Function
                 
             }
 
-             string response = "{\"address\": \""+ data?.address +"\", \"class\": \""+ data?.klass +"\", \"mac\": \""+ data?.mac +"\", \"name\": \""+ data?.name +"\", \"status\":200, \"message\":\"OK\"}";
+             string response = "{\"UUID\": \""+ data?.uuid  +"\", \"MAC\": \""+ data?.mac +"\", \"MAJOR\": \""+ data?.major  +"\", \"MINOR\": \""+ data?.minor +"\", \"MESSAGE\": \""+ data?.message +"\",\"status\":200, \"message\":\"OK\"}";
 
             string responseMessage;
             

@@ -5,11 +5,11 @@ namespace Beacons.Function
     public class Beacons
     {
         [JsonProperty(PropertyName = "id")]
-        public string address { get; set; }
-        public int klass { get; set; }
+        public string uuid { get; set; }
         public string mac { get; set; }
-        public string name { get; set; }
-        public string mensaje { get; set; } 
+        public int major { get; set; }
+        public int minor { get; set; }
+        public string message { get; set; } 
         
         public override string ToString()
         {

@@ -23,9 +23,10 @@ namespace Beacons.Function
         private static Container container;
         private static String databaseId = "BeaconsDatabase";
         private static String containerId = "BeaconsContainer";
-        private static String endpointUri = "https://azcosmosdbbeacon.documents.azure.com:443 ";
+        private static String endpointUri = "https://azcosmosdbbeacon.documents.azure.com:443";
+        //private static String endpointUri = "https://localhost:8081";
         private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
-
+        //private static String primaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
         [FunctionName("QueryBeaconFunction")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
@@ -42,10 +43,11 @@ namespace Beacons.Function
             {
                 Beacons requestBeaconItem = new Beacons
                 {
-                    address = item?.address ?? null,
-                    klass = item?.klass ?? null,
+                    uuid = item?.uuid ?? null,
                     mac = item?.mac ?? null,
-                    name = item?.name ?? null
+                    major = item?.major ?? null,
+                    minor = item?.minor ?? null,
+                    message = item?.message ?? null
                 };
 
                 requestBeaconList.Add(requestBeaconItem);

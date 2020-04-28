@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.IO;
 
 using System.Net;
@@ -57,10 +57,11 @@ namespace Beacons.Function
 //----------------------------INSTANCIANDO BEACONS Y CREANDO EL ITEM-----------// 
             Beacons CreateItemBeacons = new Beacons
             {
-                address = data?.address,
-                klass = data?.klass,
-                mac = data?.mac,
-                name = data?.name
+                uuid = data?.uuid ?? null,
+                mac = data?.mac ?? null,
+                major = data?.major ?? null,
+                minor = data?.minor ?? null,
+                message = data?.message ?? null
             };
 
             try
@@ -121,4 +122,4 @@ namespace Beacons.Function
         }
     }
 
-}
+} */
