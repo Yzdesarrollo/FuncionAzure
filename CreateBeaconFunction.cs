@@ -23,10 +23,10 @@ namespace Beacons.Function
         private static Container container;
         private static string databaseId = "BeaconsDatabase";
         private static string containerId = "BeaconsContainer";
-        private static String endpointUri = "https://azcosmosdbbeacon.documents.azure.com:443";
+        private static String endpointUri = "https://azcosmosdbbeacons.documents.azure.com:443/";
         //private static String endpointUri = "https://localhost:8081";
-        private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
-        //private static String primaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+        // private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
+        private static String primaryKey = "h9PEdi1ArxmhAVo9tjvsB8z0ezbMYHGoami8RF4p5AWnySRdkQ3jtbIAudsHIRZ6wg4UXAwdCcGxLOKlPHQpbA==";
 
         [FunctionName("CreateBeaconFunction")]
         public static async Task<IActionResult> Run(

@@ -23,10 +23,10 @@ namespace Beacons.Function
         private static Container container;
         private static String databaseId = "BeaconsDatabase";
         private static String containerId = "BeaconsContainer";
-        private static String endpointUri = "https://azcosmosdbbeacon.documents.azure.com:443";
+         private static String endpointUri = "https://azcosmosdbbeacons.documents.azure.com:443/";
         //private static String endpointUri = "https://localhost:8081";
-        private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
-        //private static String primaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+        // private static String primaryKey = "YUnfxhzkMgNPpb1btIMNxQJ15Z1ff6hilyTpnhx14u2OwRXdcxRFGWAp2Ew6Xtev7BkueRyGM8KNUB36mUnioQ==";
+        private static String primaryKey = "h9PEdi1ArxmhAVo9tjvsB8z0ezbMYHGoami8RF4p5AWnySRdkQ3jtbIAudsHIRZ6wg4UXAwdCcGxLOKlPHQpbA==";
         [FunctionName("QueryBeaconFunction")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
@@ -53,25 +53,25 @@ namespace Beacons.Function
                 requestBeaconList.Add(requestBeaconItem);
             }
 
-            cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOptions() { ApplicationName = "BeaconsACN" });
+                cosmosClient = new CosmosClient(endpointUri, primaryKey, new CosmosClientOptions() { ApplicationName = "BeaconsACN" });
 
-            database = cosmosClient.GetDatabase(databaseId);
-            
-            container = database.GetContainer(containerId);
-            
-            var sqlQueryText = "SELECT * FROM c";
+                database = cosmosClient.GetDatabase(databaseId);
+                
+                container = database.GetContainer(containerId);
+                
+                var sqlQueryText = "SELECT * FROM c";
 
-            log.LogInformation(">>>");
-            log.LogInformation("Running query: {0}\n", sqlQueryText);
-            
-            QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
+                log.LogInformation(">>>");
+                log.LogInformation("Running query: {0}\n", sqlQueryText);
+                
+                QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
 
-            FeedIterator<Beacons> queryResultSetIterator = container.GetItemQueryIterator<Beacons>(queryDefinition);
+                FeedIterator<Beacons> queryResultSetIterator = container.GetItemQueryIterator<Beacons>(queryDefinition);
 
-            List<Beacons> beaconQ = new List<Beacons>();
-            log.LogInformation(Convert.ToString(queryResultSetIterator));
-            log.LogInformation(Convert.ToString(queryResultSetIterator.HasMoreResults));
-            while (queryResultSetIterator.HasMoreResults)
+                List<Beacons> beaconQ = new List<Beacons>();
+                log.LogInformation(Convert.ToString(queryResultSetIterator));
+                log.LogInformation(Convert.ToString(queryResultSetIterator.HasMoreResults));
+                while (queryResultSetIterator.HasMoreResults)
             { 
                 FeedResponse<Beacons> currentResultSet = await queryResultSetIterator.ReadNextAsync();
                 log.LogInformation(Convert.ToString(currentResultSet));
@@ -86,7 +86,7 @@ namespace Beacons.Function
                         }
                     }
                 }
-            log.LogInformation(Convert.ToString(queryResultSetIterator.HasMoreResults));
+              log.LogInformation(Convert.ToString(queryResultSetIterator.HasMoreResults));
             }
 
             // if(beaconQ == null){
