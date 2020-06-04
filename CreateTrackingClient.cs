@@ -52,7 +52,7 @@ namespace Beacons.Function
             {
                 id = data?.id ?? null,
                 mac = data?.mac ?? null,
-                day = data?.day ?? null,
+                date = data?.date ?? null,
                 hour = data?.hour ?? null,
                 user = data?.user ?? null
             };
@@ -73,7 +73,7 @@ namespace Beacons.Function
         log.LogInformation("Created item in database with id: {0} Operation consumed {1} RUs.\n", CreateItemTrackingResponse.Resource.mac, CreateItemTrackingResponse.RequestCharge);
         
     }
-        string response = "{\"ID\": \""+ data?.id  +"\", \"MAC\": \""+ data?.mac +"\", \"DAY\": \""+ data?.day  +"\", \"HOUR\": \""+ data?.hour+"\", \"USER\": \""+ data?.user +"\",\"status\":200, \"message\":\"OK\"}";
+        string response = "{\"ID\": \""+ data?.id  +"\", \"MAC\": \""+ data?.mac +"\", \"DATE\": \""+ data?.date  +"\", \"HOUR\": \""+ data?.hour+"\", \"USER\": \""+ data?.user +"\",\"status\":200, \"message\":\"OK\"}";
 
         string responseMessage;
         

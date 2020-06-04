@@ -7,7 +7,7 @@ namespace Beacons.Function
         [JsonProperty(PropertyName = "id")]
         public string id { get; set; }
         public string mac { get; set; }
-        public string day { get; set; }
+        public string date { get; set; }
         public string hour { get; set; }
         public string user { get; set; } 
         
